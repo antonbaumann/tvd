@@ -1,0 +1,69 @@
+{
+  "_tvd": {
+    "experiment": "pg19",
+    "run_id": "matched_smollm360m_books200_lr4e-5_lambda0p8_train0_eval0",
+    "baseline": "continual",
+    "training_seed": 0,
+    "data_seed": 0,
+    "stream_seed": 0,
+    "L": null,
+    "lambda": 0.8,
+    "segment_unit": "book",
+    "metric": "sampled_fixed_context_subword_bpt"
+  },
+  "seed": 0,
+  "output_dir": "${TVD_RESULTS_ROOT}/pg19/matched_smollm360m_books200_lr4e-5_lambda0p8_train0_eval0",
+  "wandb": {
+    "enabled": false,
+    "project": "pg19-book-continual"
+  },
+  "model": {
+    "name": "HuggingFaceTB/SmolLM-360M",
+    "revision": "59f7ef243ee09a72cbc14cb054393a3e3b771d41",
+    "torch_dtype": "float32"
+  },
+  "data": {
+    "revision": "4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b",
+    "cache_dir": "${TVD_DATA_ROOT}/cache/pg19",
+    "num_books": 200,
+    "block_size": 2048,
+    "holdout_fraction": 0.1,
+    "train_data_seed": 0,
+    "eval_data_seed": 0
+  },
+  "train": {
+    "learning_rate": 4e-05,
+    "weight_decay": 0.0,
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_epsilon": 1e-08,
+    "gradient_clip_norm": 1.0,
+    "lr_scheduler_type": "constant",
+    "num_train_epochs": 1,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 1,
+    "packing": false,
+    "mixed_precision": "bf16",
+    "use_cpu": false,
+    "gradient_checkpointing": true,
+    "optimizer_state": "merge",
+    "checkpoint_every_segments": 1,
+    "merge": {
+      "enabled": true,
+      "base_meta_lr": 0.8,
+      "mode": "static",
+      "alpha": 0.0
+    }
+  },
+  "eval": {
+    "enabled": true,
+    "final": false,
+    "batch_size": 8,
+    "max_batch_tokens": 16384,
+    "book_blocks": 8,
+    "retention_k": 8,
+    "test_blocks": 2
+  }
+}

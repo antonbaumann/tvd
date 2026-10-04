@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tvd-pg19"
+version = "0.1.0"
+description = "PG-19 book-level continual pretraining with task-vector descent"
+requires-python = ">=3.12"
+dependencies = [
+    "torch", "numpy", "transformers==4.57.5", "accelerate==1.6.0",
+    "datasets==5.0.0", "trl==1.6.0", "python-dotenv", "filelock",
+    "huggingface-hub<1.0,>=0.34.0",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib"]
+tracking = ["wandb"]
+
+[tool.setuptools.packages.find]
+include = ["experiments*", "shared*"]
+
+[tool.setuptools.package-data]
+"experiments.pg19" = ["config/*.json", "config/paper/*.json"]

@@ -1,0 +1,13 @@
+# Primary dependency versions used for the local CPU environment.
+# These are not a claim about the original GPU experiment environment.
+# Select a CUDA-compatible PyTorch build for full experiments.
+torch==2.14.0
+numpy==2.5.3
+transformers==4.57.5
+accelerate==1.6.0
+datasets==5.0.0
+trl==1.6.0
+filelock==4.0.3
+python-dotenv==1.2.3
+huggingface-hub==0.36.2
+matplotlib==3.11.2
